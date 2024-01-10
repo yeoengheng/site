@@ -3,7 +3,7 @@ import client from "./sanity.client";
 
 export async function getArticle() {
   return client.fetch(
-    groq`*[_type == "article"] | order(postDate){
+    groq`*[_type == "article"] | order(postDate desc){
       _id,
       articleTitle,
       postDate,

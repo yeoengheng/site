@@ -1,40 +1,23 @@
 import Image from 'next/image'
 
 import ArticlesList from './components/ArticleList'
+import { ArticleType } from '@/types'
+import { getArticle } from '@/sanity/sanity.query'
 
-export default function Home() {
-  const articles=[
-    {
-      title:"How to create a linktree",
-      year:2022,
-      date:'22 sept',
-      url:'/blog'
-    },
-    {
-      title:"I am a bad boyfriend",
-      year:2023,
-      date:'21 sept',
-      url:'/blog'
-    },
-    {
-      title:"It's tough. Life's rough",
-      year:2023,
-      date:'20 sept',
-      url:'/blog' 
-    },
-    {
-      title:"Tell me about it",
-      year:2022,
-      date:'20 sept',
-      url:'/blog'
-    },
-    {
-      title:"helasdlo",
-      year:2021,
-      date:'20 sept',
-      url:'/blog'
-    }
-  ]
+export default async function Home() {
+  const articleSanity:ArticleType[]= await getArticle();
+
+  const articlesFormatted = articleSanity.map(article => ({
+    year: new Date(article.postDate).getFullYear(),
+    title: article.articleTitle,
+    date: new Date(article.postDate).toLocaleDateString('en-US', {
+      month: 'short', // Short month name
+      day: '2-digit'  // Two digit day
+    }),
+    url: `/blog${article.slug}`,
+  })
+  );
+
   return (
     <main className="flex min-h-screen flex-col justify-between sm:px-8 py-16 lg:py-24 relative w-full">
       <div className='container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-row items-stretch'>
@@ -60,10 +43,10 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <div className="container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-50 text-xl font-medium font-['DM Sans'] leading-loose">
+        <div className="container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
           <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-800'>
-            <ArticlesList articles={articles}/>
+            <ArticlesList articles={articlesFormatted}/>
           </div>
         </div>
       </div>

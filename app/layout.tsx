@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${dmsans.className} bg-gradient-to-b from-zinc-900 to-black shadow`}>
-        <Header logo="yeoengheng"></Header>
+        {/* <Header logo="yeoengheng"></Header> */}
         {children}
       </body>
     </html>

@@ -5,7 +5,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-import SocialItem from "./socialItems";
+import SocialItem from "./SociaItems";
 
 interface headerProps {
     logo: string,

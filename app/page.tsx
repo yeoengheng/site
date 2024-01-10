@@ -62,7 +62,7 @@ export default function Home() {
       <div>
         <div className="container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-50 text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
-          <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-700'>
+          <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-800'>
             <ArticlesList articles={articles}/>
           </div>
         </div>

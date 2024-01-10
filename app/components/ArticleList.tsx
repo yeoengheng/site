@@ -24,7 +24,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles }) => {
       {years.map((year, index) => (
         <div key={year}>
           {/* Conditionally render the horizontal rule based on index */}
-          {index !== 0 && <hr className="border-t border-zinc-700 w-full" />}
+          {index !== 0 && <hr className="border-t border-zinc-800 w-full" />}
           <YearGroup year={year} articles={articlesByYear[year]} />
         </div>
       ))}

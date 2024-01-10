@@ -5,29 +5,34 @@ import ArticlesList from './components/ArticleList'
 export default function Home() {
   const articles=[
     {
-      title:"hello",
-      year:2021,
-      date:'20 sept'
-    },
-    {
-      title:"hello",
-      year:2023,
-      date:'20 sept'
-    },
-    {
-      title:"hello",
-      year:2021,
-      date:'20 sept'
-    },
-    {
-      title:"cheers",
+      title:"How to create a linktree",
       year:2022,
-      date:'20 sept'
+      date:'22 sept',
+      url:'/blog'
     },
     {
-      title:"hello",
+      title:"I am a bad boyfriend",
+      year:2023,
+      date:'21 sept',
+      url:'/blog'
+    },
+    {
+      title:"It's tough. Life's rough",
+      year:2023,
+      date:'20 sept',
+      url:'/blog' 
+    },
+    {
+      title:"Tell me about it",
+      year:2022,
+      date:'20 sept',
+      url:'/blog'
+    },
+    {
+      title:"helasdlo",
       year:2021,
-      date:'20 sept'
+      date:'20 sept',
+      url:'/blog'
     }
   ]
   return (
@@ -41,15 +46,15 @@ export default function Home() {
             <br/> 
             Builder.
           </div>
-          <div className="text-zinc-400 text-lg font-normal leading-loose">
+          <div className="text-zinc-400 text-md font-normal leading-loose">
             Hello, I’m Eng Heng. I am the founder of Kabana, an AI-powered in-app guides provider for customer success and support teams. Previously, I was also the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
           </div>
         </div>
         <div id='image' className='flex-1 flex justify-center items-center w-full'>
           <Image 
             src="/engheng.svg"
-            width={400}
-            height={400}
+            width={350}
+            height={350}
             alt='Picture of Eng Heng'
           />
         </div>
@@ -57,7 +62,7 @@ export default function Home() {
       <div>
         <div className="container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-50 text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
-          <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-800'>
+          <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-700'>
             <ArticlesList articles={articles}/>
           </div>
         </div>

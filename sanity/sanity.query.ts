@@ -11,3 +11,15 @@ export async function getArticle() {
     }`
   );
 }
+
+export async function getSpecificArticle(slugcurrent:string) {
+    return client.fetch(
+        groq`*[_type == "article" && slug.current == $slugcurrent] {
+            _id,
+            articleTitle,
+            postDate,
+            content
+          }`,
+        { slugcurrent } // Passing the variable as a parameter
+    )
+}

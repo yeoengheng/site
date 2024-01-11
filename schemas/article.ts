@@ -1,4 +1,5 @@
 import { defineField } from "sanity";
+import twitter from "./objects/twitter"
 
 const article = {
     name: "article",
@@ -47,8 +48,10 @@ const article = {
                       }
                     }
                   ]
+            },
+            {
+              type: "twitter"
             }
-        
         ],
         }
 

@@ -1,8 +1,11 @@
+'use client'
+
 import { getSpecificArticle } from "@/sanity/sanity.query"
 import { SpecificArticleType } from "@/types"
-
+import {useNextSanityImage} from 'next-sanity-image'
+import Image from 'next/image';
+import client from "@/sanity/sanity.client";
 import {PortableText, PortableTextComponents} from '@portabletext/react'
-import { Children } from "react";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 
@@ -26,7 +29,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
   };
-
+  const SanityImage = ({ asset }) => {
+    const imageProps = useNextSanityImage(client, asset);
+  
+    if (!imageProps) return null;
+  
+    return (<Image 
+      {...imageProps}
+      layout='responsive'
+      sizes='(max-width: 800px) 100vw, 800px'
+    />);
+  }
   const components: PortableTextComponents = {
     block: {
       // Ex. 1: customizing common block types
@@ -34,7 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
       h3: ({children}) => <h3 className="text-xl">{children}</h3>,
       normal: ({children})=> <p className="text-zinc-200 text-wrap subpixel-antialiased">{children}</p>,
-      blockquote: ({children}) => <blockquote className="border-l-2 border-zinc-800 pl-4 text-zinc-300 mx-6">{children}</blockquote>,
+      blockquote: ({children}) => <blockquote className="border-l-2 border-zinc-800 pl-4 text-zinc-300 mx-4">{children}</blockquote>,
     },
     marks: {
       // Ex. 1: custom renderer for the em / italics decorator
@@ -62,6 +75,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
       // Ex. 1: customizing common list types
       bullet: ({children}) => <li style={{listStyleType: 'circle'}}>{children}</li>,
       number:({children}) => <li style={{listStyleType: 'decimal'}}>{children}</li>,
+    },
+    types: {
+      image: ({ value }) => {
+        return (
+          <SanityImage {...value} />
+        );
+      },
+      
     },
 
   }

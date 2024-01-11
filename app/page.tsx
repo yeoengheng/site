@@ -48,7 +48,7 @@ export default function Home() {
         initial = {{opacity:0}} 
         animate={{opacity:1}} 
         transition={{ duration: 1, ease: "easeOut" }} 
-        className='container relative h-screen min-h-screen px-4 sm:px-6 py-8 lg:py-8 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-col items-stretch'>
+        className='container relative h-screen min-h-screen px-4 sm:px-8 pt-16 pb-8 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-col items-stretch'>
         <div className='flex flex-row'>
           <div id='text' className='flex flex-col justify-start items-start gap-6 flex-1 mr-8'>
             <div className="text-white text-5xl font-medium font-['DM Sans']">

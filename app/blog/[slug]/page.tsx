@@ -7,6 +7,12 @@ import Image from 'next/image';
 import client from "@/sanity/sanity.client";
 import {PortableText, PortableTextComponents} from '@portabletext/react'
 
+interface SanityImageAsset{
+
+}
+interface SanityImageProps{
+  asset:SanityImageAsset
+}
 export default async function Page({ params }: { params: { slug: string } }) {
 
   const articleContent:SpecificArticleType[] = await getSpecificArticle("/"+params.slug)
@@ -29,7 +35,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
   };
-  const SanityImage = ({ asset }) => {
+
+
+  const SanityImage:React.FC<SanityImageProps> = ({ asset }) => {
     const imageProps = useNextSanityImage(client, asset);
   
     if (!imageProps) return null;
@@ -38,6 +46,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       {...imageProps}
       layout='responsive'
       sizes='(max-width: 800px) 100vw, 800px'
+      alt=""
     />);
   }
   const components: PortableTextComponents = {

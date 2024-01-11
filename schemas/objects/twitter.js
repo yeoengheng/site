@@ -14,13 +14,13 @@ const Preview = ({ value }) => {
 const twitter = {
     name: 'twitter',
     type: 'object',
-    title: 'Twitter Embed',
+    title: 'Twitter',
     icon:FaTwitter,
     fields: [
         {
           name: 'id',
           type: 'string',
-          title: 'Twitter tweet id'
+          title: 'Twitter tweet ID'
         }
       ],
       preview: {

@@ -1,54 +1,115 @@
+'use client'
 import Image from 'next/image'
+import { FiChevronsDown } from "react-icons/fi";
 
 import ArticlesList from './components/ArticleList'
 import { ArticleType } from '@/types'
 import { getArticle } from '@/sanity/sanity.query'
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 
-export default async function Home() {
-  const articleSanity:ArticleType[]= await getArticle();
-  const articlesFormatted = articleSanity.map(article => ({
-    year: new Date(article.postDate).getFullYear(),
-    title: article.articleTitle,
-    date: new Date(article.postDate).toLocaleDateString('en-US', {
-      month: 'short', // Short month name
-      day: '2-digit'  // Two digit day
-    }),
-    url: `/blog${article.slug}`,
-  })
-  );
+import { useRef, useEffect, useState } from 'react';
+
+export default function Home() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  
+  const [articlesFormatted, setArticlesFormatted] = useState([]);
+
+  useEffect(() => {
+    async function fetchArticles() {
+      const articleSanity:ArticleType[] = await getArticle();
+      const formattedArticles:any = articleSanity.map(article => ({
+        year: new Date(article.postDate).getFullYear(),
+        title: article.articleTitle,
+        date: new Date(article.postDate).toLocaleDateString('en-US', {
+          month: 'short',
+          day: '2-digit'
+        }),
+        url: `/blog${article.slug}`,
+      }));
+      setArticlesFormatted(formattedArticles);
+    }
+
+    fetchArticles();
+  }, []);
+
+  const [isBouncing, setIsBouncing] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setIsBouncing(false);
+      }, 2900);
+
+      return () => clearTimeout(timer); // Clear the timer if the component unmounts
+  }, []);
   return (
     <main className="flex min-h-screen flex-col justify-between sm:px-8 py-16 lg:py-24 relative w-full">
-      <div className='container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-row items-stretch'>
-        <div id='text' className='flex flex-col justify-start items-start gap-6 flex-1 mr-8'>
-          <div className="text-white text-5xl font-medium font-['DM Sans']">
-            Product Manager.
-            <br/>
-            Designer.
-            <br/> 
-            Builder.
+      <motion.div 
+        initial = {{opacity:0}} 
+        animate={{opacity:1}} 
+        transition={{ duration: 1, ease: "easeOut" }} 
+        className='container relative h-screen min-h-screen px-4 sm:px-6 py-8 lg:py-8 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-col items-stretch'>
+        <div className='flex flex-row'>
+          <div id='text' className='flex flex-col justify-start items-start gap-6 flex-1 mr-8'>
+            <div className="text-white text-5xl font-medium font-['DM Sans']">
+              Product Manager.
+              <br/>
+              Designer.
+              <br/> 
+              Builder.
+            </div>
+            <div className="text-zinc-400 text-md font-normal leading-loose">
+              Hello, I’m Eng Heng. I am the founder of Kabana, an AI-powered in-app guides provider for customer success and support teams. Previously, I was also the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
+            </div>
           </div>
-          <div className="text-zinc-400 text-md font-normal leading-loose">
-            Hello, I’m Eng Heng. I am the founder of Kabana, an AI-powered in-app guides provider for customer success and support teams. Previously, I was also the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
+          <div id='image' className='flex-1 flex justify-top items-start w-full'>
+            <Image 
+              src="/engheng.svg"
+              width={350}
+              height={350}
+              alt='Picture of Eng Heng'
+            />
           </div>
         </div>
-        <div id='image' className='flex-1 flex justify-center items-center w-full'>
-          <Image 
-            src="/engheng.svg"
-            width={350}
-            height={350}
-            alt='Picture of Eng Heng'
-          />
-        </div>
-      </div>
-      <div>
-        <div className="container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-xl font-medium font-['DM Sans'] leading-loose">
+        <motion.div 
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{ duration: 1, ease: "easeOut" }} 
+          className='flex flex-col w-full items-center justify-center absolute bottom-[200px] left-1/2 transform -translate-x-1/2 text-zinc-500'>
+          <motion.div 
+            initial={{ opacity: 1 }}
+            animate={isBouncing ? { y: [0, 10, 0] } : { opacity: 0 }}
+            transition={isBouncing ? {
+                y: {
+                    duration: 0.8,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop"
+                }
+            } : {
+                opacity: {
+                    duration: 0.5 // Duration of the fade out
+                }
+            }}
+            className='py-4 items-center justify-center  text-zinc-500'>
+            <FiChevronsDown size={26} />
+
+          </motion.div>
+
+        </motion.div>
+      </motion.div>
+      <motion.div 
+          ref={ref}           
+          initial={{opacity:0}} 
+          animate={{opacity: isInView ? 1 : 0}} 
+          transition={{ duration: 1, ease: "easeIn" }}>
+        <div className="container px-4 sm:px-8 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
-          <div className='mt-4 divide-y divide-zinc-800 border-t border-zinc-800'>
+          <div className='mt-6 divide-y divide-zinc-800 border-t border-zinc-800'>
             <ArticlesList articles={articlesFormatted}/>
           </div>
         </div>
-      </div>
+      </motion.div>
     </main>
   )
 }

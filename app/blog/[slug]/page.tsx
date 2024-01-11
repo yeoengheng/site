@@ -2,8 +2,7 @@ import { getSpecificArticle } from "@/sanity/sanity.query"
 import { SpecificArticleType } from "@/types"
 
 import {PortableText, PortableTextComponents} from '@portabletext/react'
-
-import { useEffect } from "react"
+import { Children } from "react";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 
@@ -29,6 +28,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
   };
 
   const components: PortableTextComponents = {
+    block: {
+      // Ex. 1: customizing common block types
+      h1: ({children}) => <h1 className="text-3xl">{children}</h1>,
+      h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
+      h3: ({children}) => <h3 className="text-xl">{children}</h3>,
+      normal: ({children})=> <p className="text-zinc-200 text-wrap subpixel-antialiased">{children}</p>,
+      blockquote: ({children}) => <blockquote className="border-l-2 border-zinc-800 pl-4 text-zinc-300 mx-6">{children}</blockquote>,
+    },
     marks: {
       // Ex. 1: custom renderer for the em / italics decorator
       em: ({children}) => <em className="text-gray-600 font-semibold">{children}</em>,
@@ -45,7 +52,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     },
     list: {
       // Ex. 1: customizing common list types
-      bullet: ({children}) => <ul className="mt-xl">{children}</ul>,
+      bullet: ({children}) => <ul className="mt-lg ml-6 items-start">{children}</ul>,
       number: ({children}) => <ol className="mt-lg ml-6 items-start">{children}</ol>,
   
       // Ex. 2: rendering custom lists
@@ -53,16 +60,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     },
     listItem: {
       // Ex. 1: customizing common list types
-      bullet: ({children}) => <li style={{listStyleType: 'disclosure-closed'}}>{children}</li>,
-      number:({children}) => <li style={{listStyleType: 'number'}}>{children}</li>,
+      bullet: ({children}) => <li style={{listStyleType: 'circle'}}>{children}</li>,
+      number:({children}) => <li style={{listStyleType: 'decimal'}}>{children}</li>,
     },
-    block: {
-      // Ex. 1: customizing common block types
-      h1: ({children}) => <h1 className="text-3xl">{children}</h1>,
-      h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
-      h3: ({children}) => <h3 className="text-xl">{children}</h3>,
-      blockquote: ({children}) => <blockquote id="quote" className="border-l-zinc-400 mx-2">{children}</blockquote>,
-    },
+
   }
   return (
     <main className="container flex justify-center px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc">

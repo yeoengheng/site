@@ -3,10 +3,10 @@ import Image from 'next/image'
 import ArticlesList from './components/ArticleList'
 import { ArticleType } from '@/types'
 import { getArticle } from '@/sanity/sanity.query'
+import { motion } from "framer-motion"
 
 export default async function Home() {
   const articleSanity:ArticleType[]= await getArticle();
-
   const articlesFormatted = articleSanity.map(article => ({
     year: new Date(article.postDate).getFullYear(),
     title: article.articleTitle,
@@ -17,7 +17,6 @@ export default async function Home() {
     url: `/blog${article.slug}`,
   })
   );
-
   return (
     <main className="flex min-h-screen flex-col justify-between sm:px-8 py-16 lg:py-24 relative w-full">
       <div className='container px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-row items-stretch'>

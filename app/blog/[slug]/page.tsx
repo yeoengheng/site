@@ -8,7 +8,7 @@ import client from "@/sanity/sanity.client";
 import {PortableText, PortableTextComponents} from '@portabletext/react'
 
 interface SanityImageAsset{
-
+// come back to this next time. fill type
 }
 interface SanityImageProps{
   asset:SanityImageAsset

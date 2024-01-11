@@ -1,5 +1,19 @@
 import { defineField } from "sanity";
 
+const tweetEmbed = {
+  name: 'tweetEmbed',
+  title: 'Tweet Embed',
+  type: 'object',
+  fields: [
+    {
+      name: 'url',
+      title: 'Tweet URL',
+      type: 'url'
+    }
+  ]
+};
+
+
 const article = {
     name: "article",
     title: "Article",
@@ -56,7 +70,8 @@ const article = {
                       }
                     }
                   ]
-            }
+            },
+            { type: "tweetEmbed" }
         ],
         }
 

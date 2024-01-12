@@ -2,10 +2,12 @@ import { FaTwitter } from "react-icons/fa";
 import React from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 
-const Preview = ({ value }) => {
+const TweetPreview = ({ value }) => {
+    console.log(value);
     const { id } = value;
     return (
       <div>
+        hello
         {id ? <TwitterTweetEmbed tweetId={id} /> : <p>No tweet ID provided</p>}
       </div>
     );
@@ -27,8 +29,8 @@ const twitter = {
         select: {
            id: 'id'
         },
-        component: Preview
-      }
+        component: TweetPreview,
+      },
   }
 
   export default twitter

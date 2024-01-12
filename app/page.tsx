@@ -50,19 +50,19 @@ export default function Home() {
         transition={{ duration: 1, ease: "easeOut" }} 
         className='container relative h-[calc(90vh)] px-4 sm:px-8 pb-24 mx-auto prose prose-zinc max-w-4xl flex flex-col lg:flex-col justify-center items-stretch'>
         <div className='flex flex-row'>
-          <div id='text' className='flex flex-col justify-start items-start gap-6 flex-1 mr-8'>
-            <div className="text-white text-5xl font-medium font-['DM Sans']">
+          <div id='text' className='flex flex-col w-full justify-start items-start gap-6 flex-1 mr-8 '>
+            <div className="text-white text-3xl sm:text-3xl md:text-5xl font-medium font-['DM Sans']">
               Product Manager.
               <br/>
               Designer.
               <br/> 
               Builder.
             </div>
-            <div className="text-zinc-400 text-md font-normal leading-loose">
+            <div className="text-zinc-400 text-base font-normal leading-loose">
               Hello, I’m Eng Heng. I am the founder of Kabana, an AI-powered in-app guides provider for customer success and support teams. Previously, I was also the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
             </div>
           </div>
-          <div id='image' className='flex-1 flex justify-top items-start w-full'>
+          <div id='image' className='flex-1 flex justify-top items-start sm:flex hidden'>
             <Image 
               src="/engheng.svg"
               width={350}
@@ -103,7 +103,7 @@ export default function Home() {
           initial={{opacity:0}} 
           animate={{opacity: isInView ? 1 : 0}} 
           transition={{ duration: 1, ease: "easeIn" }}>
-        <div className="container relative px-4 sm:px-8 pb-40 pt-12 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-xl font-medium font-['DM Sans'] leading-loose">
+        <div className="container relative px-4 sm:px-8 pb-40 pt-12 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-lg sm:text-lg md:text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
           <div className='mt-6 divide-y divide-zinc-800 border-t border-zinc-800'>
             <ArticlesList articles={articlesFormatted}/>

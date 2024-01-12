@@ -37,8 +37,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
   };
-
-
   const SanityImage:React.FC<SanityImageProps> = ({ asset }) => {
     const imageProps = useNextSanityImage(client, asset);
   
@@ -99,7 +97,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
   return (
     <main className="container flex justify-center px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc">
-      <div className="space-y-8 w-5/12">
+      <div className="space-y-8 mx-auto px-6 lg:px-72 md:px-56 sm:px-24">
         {articleContent.map((item)=>(
           <React.Fragment key={item.id_}>
           <h2  className="text-2xl">{item.articleTitle}</h2>

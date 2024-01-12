@@ -7,6 +7,8 @@ import Image from 'next/image';
 import client from "@/sanity/sanity.client";
 import {PortableText, PortableTextComponents} from '@portabletext/react'
 
+import React from 'react';
+
 interface SanityImageAsset{
 // come back to this next time. fill type
 }
@@ -99,14 +101,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <main className="container flex justify-center px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc">
       <div className="space-y-8 w-5/12">
         {articleContent.map((item)=>(
-          <>
-          <h2 key={item.id_} className="text-2xl">{item.articleTitle}</h2>
+          <React.Fragment key={item.id_}>
+          <h2  className="text-2xl">{item.articleTitle}</h2>
           <p>{formatDate(item.postDate)}</p>
           <PortableText
             value={item.content}
             components={components}
           />
-          </>
+          </React.Fragment>
         ))}
       </div>
     </main>

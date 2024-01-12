@@ -34,7 +34,7 @@ const Header : React.FC<headerProps> =({
 }) =>{
     const router = useRouter();
     return(
-        <div className="flex row w-full justify-between relative w-full px-8 py-6">
+        <header className="flex row w-full  justify-between relative w-full px-8 py-6">
             <div className="text-zinc-500 text-xl font-normal font-['DM Sans'] cursor-pointer" onClick={()=>router.push('/')}>
                 {logo} 
             </div>
@@ -47,7 +47,7 @@ const Header : React.FC<headerProps> =({
                     />
                 ))}
             </div>
-        </div>
+        </header>
     )
 }
 

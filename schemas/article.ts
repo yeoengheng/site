@@ -51,6 +51,12 @@ const article = {
             },
             {
               type: "twitter"
+            },
+            {
+              type: "linkedin"
+            },
+            {
+              type: "youtube"
             }
         ],
         }

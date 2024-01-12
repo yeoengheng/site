@@ -6,6 +6,7 @@ import {useNextSanityImage} from 'next-sanity-image'
 import Image from 'next/image';
 import client from "@/sanity/sanity.client";
 import {PortableText, PortableTextComponents} from '@portabletext/react'
+import { LinkedInEmbed, TwitterEmbed, YouTubeEmbed } from "react-social-media-embed";
 
 import React from 'react';
 
@@ -51,7 +52,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
   const components: PortableTextComponents = {
     block: {
-      // Ex. 1: customizing common block types
       h1: ({children}) => <h1 className="text-3xl">{children}</h1>,
       h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
       h3: ({children}) => <h3 className="text-xl">{children}</h3>,
@@ -91,6 +91,21 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <SanityImage {...value} />
         );
       },
+      twitter:({value}) => {
+        return (
+          <TwitterEmbed url={value.url}/>
+        )
+      },
+      youtube:({value}) => {
+        return (
+          <YouTubeEmbed url={value.url}/>
+        )
+      },
+      linkedin:({value}) => {
+        return (
+          <LinkedInEmbed url={value.url}/>
+        )
+      }
       
     },
 

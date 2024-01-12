@@ -100,7 +100,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className="space-y-8 mx-auto px-8 xl:px-96 lg:px-56 md:px-36 sm:px-20">
         {articleContent.map((item)=>(
           <React.Fragment key={item.id_}>
-          <h2  className="text-2xl">{item.articleTitle}</h2>
+          <h2 className="text-2xl">{item.articleTitle}</h2>
           <p>{formatDate(item.postDate)}</p>
           <PortableText
             value={item.content}

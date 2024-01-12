@@ -43,7 +43,7 @@ export default function Home() {
       return () => clearTimeout(timer); // Clear the timer if the component unmounts
   }, []);
   return (
-    <main className="flex min-h-screen flex-col justify-between sm:px-8 pb-16 lg:pb-24 relative w-full">
+    <main className="flex min-h-screen flex-col justify-between px-4 sm:px-8 pb-16 lg:pb-24 relative w-full">
       <motion.div 
         initial = {{opacity:0}} 
         animate={{opacity:1}} 

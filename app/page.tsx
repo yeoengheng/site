@@ -43,7 +43,7 @@ export default function Home() {
       return () => clearTimeout(timer); // Clear the timer if the component unmounts
   }, []);
   return (
-    <main className="flex min-h-screen flex-col justify-between px-4 sm:px-8 pb-16 lg:pb-24 relative w-full">
+    <main className="flex min-h-screen flex-col justify-between px-4 sm:px-8 pb-16 lg:pb-24 sm:mb-12 relative w-full">
       <motion.div 
         initial = {{opacity:0}} 
         animate={{opacity:1}} 
@@ -103,7 +103,7 @@ export default function Home() {
           initial={{opacity:0}} 
           animate={{opacity: isInView ? 1 : 0}} 
           transition={{ duration: 1, ease: "easeIn" }}>
-        <div className="container relative px-4 sm:px-8 pb-10 pt-12 sm:pb-20 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-lg sm:text-lg md:text-xl font-medium font-['DM Sans'] leading-loose">
+        <div className="container relative px-4 sm:px-8 pb-10 pt-12 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-lg sm:text-lg md:text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
           <div className='mt-6 divide-y divide-zinc-800 border-t border-zinc-800'>
             <ArticlesList articles={articlesFormatted}/>

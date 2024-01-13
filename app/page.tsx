@@ -75,7 +75,7 @@ export default function Home() {
           initial={{opacity:0}}
           animate={{opacity:1}}
           transition={{ duration: 1, ease: "easeOut" }} 
-          className='flex flex-col w-full items-center justify-center absolute bottom-[30px] left-1/2 transform -translate-x-1/2 text-zinc-500'>
+          className='flex flex-col w-full items-center justify-center absolute md:bottom-[30px] sm:bottom-[40px] left-1/2 transform -translate-x-1/2 text-zinc-500'>
           <motion.div 
             initial={{ opacity: 1 }}
             animate={isBouncing ? { y: [0, 10, 0] } : { opacity: 0 }}
@@ -103,7 +103,7 @@ export default function Home() {
           initial={{opacity:0}} 
           animate={{opacity: isInView ? 1 : 0}} 
           transition={{ duration: 1, ease: "easeIn" }}>
-        <div className="container relative px-4 sm:px-8 pb-10 pt-12 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-lg sm:text-lg md:text-xl font-medium font-['DM Sans'] leading-loose">
+        <div className="container relative px-4 sm:px-8 pb-10 pt-12 sm:pb-20 mx-auto prose prose-zinc dark:prose-invert max-w-4xl text-zinc-200 text-lg sm:text-lg md:text-xl font-medium font-['DM Sans'] leading-loose">
           Thoughts, ideas & opinions
           <div className='mt-6 divide-y divide-zinc-800 border-t border-zinc-800'>
             <ArticlesList articles={articlesFormatted}/>

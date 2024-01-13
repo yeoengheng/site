@@ -43,7 +43,7 @@ export default function Home() {
       return () => clearTimeout(timer); // Clear the timer if the component unmounts
   }, []);
   return (
-    <main className="flex min-h-screen flex-col justify-between px-4 sm:px-8 pb-16 lg:pb-24 sm:mb-12 relative w-full">
+    <main className="flex min-h-screen flex-col justify-between px-4 sm:px-8 pb-16 lg:pb-24 sm:mb-16 relative w-full">
       <motion.div 
         initial = {{opacity:0}} 
         animate={{opacity:1}} 
@@ -75,7 +75,7 @@ export default function Home() {
           initial={{opacity:0}}
           animate={{opacity:1}}
           transition={{ duration: 1, ease: "easeOut" }} 
-          className='flex flex-col w-full items-center justify-center absolute md:bottom-[30px] sm:bottom-[40px] left-1/2 transform -translate-x-1/2 text-zinc-500'>
+          className='flex flex-col w-full items-center justify-center absolute lg:bottom-[30px] md:bottom-[30px] sm:bottom-[32px] left-1/2 transform -translate-x-1/2 text-zinc-500'>
           <motion.div 
             initial={{ opacity: 1 }}
             animate={isBouncing ? { y: [0, 10, 0] } : { opacity: 0 }}

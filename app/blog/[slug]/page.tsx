@@ -55,7 +55,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       h1: ({children}) => <h1 className="text-3xl">{children}</h1>,
       h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
       h3: ({children}) => <h3 className="text-xl">{children}</h3>,
-      normal: ({children})=> <p className="text-zinc-200 text-wrap subpixel-antialiased">{children}</p>,
+      normal: ({children})=> <p className="text-zinc-200 text-balance subpixel-antialiased">{children}</p>,
       blockquote: ({children}) => <blockquote className="border-l-2 border-zinc-800 pl-4 text-zinc-300 mx-4">{children}</blockquote>,
     },
     marks: {
@@ -111,7 +111,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   }
   return (
-    <main className="container flex justify-center px-4 sm:px-8 py-16 lg:py-24 mx-auto prose prose-zinc">
+    <main className="container flex justify-center px-4 py-16 lg:py-24 mx-auto prose prose-zinc">
       <div className="space-y-8 mx-auto px-8 xl:px-96 lg:px-56 md:px-36 sm:px-20">
         {articleContent.map((item)=>(
           <React.Fragment key={item.id_}>

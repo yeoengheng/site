@@ -55,7 +55,7 @@ export default function Home() {
             <div className="text-white text-3xl sm:text-3xl md:text-5xl font-medium font-['DM Sans']">
               Product Manager.
               <br/>
-              Learner
+              Learner.
               <br/> 
               Builder.
             </div>

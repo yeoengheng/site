@@ -55,12 +55,12 @@ export default function Home() {
             <div className="text-white text-3xl sm:text-3xl md:text-5xl font-medium font-['DM Sans']">
               Product Manager.
               <br/>
-              Designer.
+              Learner
               <br/> 
               Builder.
             </div>
             <div className="text-zinc-400 text-base font-normal leading-loose">
-              Hello, I’m Eng Heng. I am the founder of Kabana, an embedded co-pilot platform for customer and product teams. Before this, I was the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
+              Hello, I’m Eng Heng. I am the founder of Kabana. Before this, I was the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
             </div>
           </div>
           <div id='image' className='flex-1 flex justify-top items-start sm:flex hidden'>

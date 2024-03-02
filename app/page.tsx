@@ -60,7 +60,7 @@ export default function Home() {
               Builder.
             </div>
             <div className="text-zinc-400 text-base font-normal leading-loose">
-              Hello, I’m Eng Heng. I am the founder of Kabana, we are working on building APAC's Ecommerce Data Hub. Before this, I was the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
+              Hello, I’m Eng Heng. I am the founder of Kabana, we are working on building an Ecommerce Data Hub. Before this, I was the first product hire at Kyte ($60 mil Series B) and HeadsUp (acq. by HighTouch). 
             </div>
           </div>
           <div id='image' className='flex-1 flex justify-top items-start sm:flex hidden'>

@@ -74,11 +74,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     },
     list: {
       // Ex. 1: customizing common list types
-      bullet: ({children}) => <ul className="mt-lg ml-6 items-start">{children}</ul>,
-      number: ({children}) => <ol className="mt-lg ml-6 items-start">{children}</ol>,
+      bullet: ({children}) => <ul className="mt-lg ml-6 text-zinc-200 items-start">{children}</ul>,
+      number: ({children}) => <ol className="mt-lg ml-6 text-zinc-200 items-start">{children}</ol>,
   
       // Ex. 2: rendering custom lists
-      checkmarks: ({children}) => <ol className="m-auto text-lg">{children}</ol>,
+      checkmarks: ({children}) => <ol className="m-auto text-lg text-zinc-200">{children}</ol>,
     },
     listItem: {
       // Ex. 1: customizing common list types

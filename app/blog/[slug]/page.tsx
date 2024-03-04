@@ -52,9 +52,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
   const components: PortableTextComponents = {
     block: {
-      h1: ({children}) => <h1 className="text-3xl">{children}</h1>,
-      h2: ({children}) => <h2 className="text-2xl">{children}</h2>,
-      h3: ({children}) => <h3 className="text-xl">{children}</h3>,
+      h1: ({children}) => <h1 className="text-3xl text-zinc-200">{children}</h1>,
+      h2: ({children}) => <h2 className="text-2xl text-zinc-200">{children}</h2>,
+      h3: ({children}) => <h3 className="text-xl text-zinc-200">{children}</h3>,
       normal: ({children})=> <p className="text-zinc-200 text-pretty subpixel-antialiased">{children}</p>,
       blockquote: ({children}) => <blockquote className="border-l-2 border-zinc-800 pl-4 text-zinc-300 mx-4">{children}</blockquote>,
     },
